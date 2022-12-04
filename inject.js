@@ -38,7 +38,6 @@ function replaceEmojiInInnerTextRecursively(nodeList) {
             if (text.length < 1000) {
                 text = text.replaceAll(toReplace, '🤡')
                 node.innerText = text;
-            } else {
             }
         }
     }
