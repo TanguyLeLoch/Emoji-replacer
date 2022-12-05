@@ -1,11 +1,6 @@
 (function () {
-    window.addEventListener("load", myMain, false);
+    window.addEventListener("load", run, false);
 })();
-
-function myMain() {
-    console.log('start replacing emoji...');
-    run()
-}
 
 async function run() {
     do {
@@ -32,15 +27,7 @@ function replaceImg() {
 
 
 function replaceEmojiInInnerTextRecursively(nodeList) {
-    const replaceEmoji = (node, toReplace) => {
-        if (node.innerText.includes(toReplace)) {
-            let text = node.innerText
-            if (text.length < 1000) {
-                text = text.replaceAll(toReplace, '🤡')
-                node.innerText = text;
-            }
-        }
-    }
+
 
     for (let i = 0; i < nodeList.length; i++) {
         const node = nodeList[i];
@@ -51,6 +38,16 @@ function replaceEmojiInInnerTextRecursively(nodeList) {
         }
         if (node.childNodes.length > 0) {
             replaceEmojiInInnerTextRecursively(node.childNodes);
+        }
+    }
+}
+
+function replaceEmoji(node, toReplace) {
+    if (node.innerText.includes(toReplace)) {
+        let text = node.innerText
+        if (text.length < 1000) {
+            text = text.replaceAll(toReplace, '🤡')
+            node.innerText = text;
         }
     }
 }
